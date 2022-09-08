@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<br>
+{% if messages%}
+    {% for message in messages %}
+    <article class ="message is-success">
+        <div class="message-header">
+            <p>{{message}}</p>
+        </div>
+    </article>
+    {% endfor %}
+
+{% endif %}
+
+{% comment %} <a href="{% url "crear_articulo" %}" class="button is-success">crear articulo</a> {% endcomment %}
+
+<a href="{% url "crear_vbc_articulo" %}" class="button is-success">crear articulo(VBC)</a>
+
+{% for objecto in lista_articulos %}
+<section class="article">
+   
+    <div class="column is-8 is-offset-2">
+
+        <div class="card article">
+            <div class="card-content">
+                <div class="media">
+
+                   
+                    <div class="media-content has-text-centered">
+                        <a href ="{% url "detalle_articulo" objecto.pk %}" class="title article-title">{{objecto.nombre}}</a>
+                        <div class="tags has-addons level-item">
+                            <span class="tags is-rounded is-info">{{objecto.precio}}</span>
+                            <span class="tag is-rounded">{{objecto.fecha|date:"d/m/Y"}}</span>
+                            {% comment %} <p>{{objecto.descripcion}}</p> {% endcomment %}
+
+                        </div>
+                    </div>
+               
+                </div>
+                <div class="content article-body">
+                    {% comment %} <p> adadad {% endcomment %}
+                        <p>{{objecto.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+        {% comment %} <a href="{% url "listar stock "%}">VOLVER</a> {% endcomment %}
+</section>
+{% endfor %}
+{% endblock %}

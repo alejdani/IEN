@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<section class="article">
+   
+    <div class="column is-8 is-offset-2">
+
+        <div class="card article">
+            <div class="card-content">
+                <div class="media">
+
+                   
+                    <div class="media-content has-text-centered">
+                        <p class="title article-title">{{articulo.nombre}}</p>
+                        <div class="tags has-addons level-item">
+                            <span class="tags is-rounded is-info">{{articulo.precio}}</span>
+                            <span class="tag is-rounded">{{articulo.fecha|date:"d/m/Y"}}</span>
+                            
+
+                        </div>
+                    </div>
+               
+                </div>
+                <div class="content article-body">
+                    
+                        <p>{{articulo.descripcion}}</p>
+                </div>
+            </div>
+        </div><br>
+        <a href="{% url "listar_stock" %}" class="button is-info">VOLVER</a>
+        <a href="{% url "eliminar_articulo " articulo.pk %}" class="button is danger">eliminar articulo</a>
+
+
+</section>
+
+{% endblock %}

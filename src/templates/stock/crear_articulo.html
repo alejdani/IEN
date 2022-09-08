@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+{% if messages%}
+    {% for message in messages %}
+    <article class ="message is-danger">
+        <div class="message-header">
+            <p>{{message}}</p>
+        </div>
+    </article>
+    {% endfor %}
+
+{% endif %}
+
+
+
+<section class="article">
+   
+    <div class="column is-8 is-offset-2">
+
+        <div class="card article">
+            <form method="POST" >{% csrf_token %}
+                
+                
+                {{form.as_p}}
+
+                <button type="submit" class="button is-primary">GUARDAR</button>
+                <a href="{% url "listar_stock"%}" class="button is-primary">volver</a>
+                             
+            </form>
+        </div>
+    </div>
+        
+</section>
+
+{% endblock %}
